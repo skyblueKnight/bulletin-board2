@@ -32,7 +32,7 @@
 
 	<h2>掲示板アプリケーション</h2>
 
-	<form th:action="@{/bulletin-board/post-article}" method="post"
+	<form th:action="@{/insertArticle}" method="post"
 		th:object="${articleForm}">
 		<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
 			style="color: red">投稿者名エラーメッセージ</span><br> <label
@@ -67,7 +67,7 @@
 				th:text="${comment.name}"></span><br> コメント内容：<span
 				th:text="${comment.content}"></span><br>
 		</div>
-		<form th:action="@{/bulletin-board/post-comment}" method="post"
+		<form th:action="@{/insert-comment}" method="post"
 			th:object="${commentForm}">
 			<input type="hidden" th:value="${article.id}" name="articleId">
 			<span
