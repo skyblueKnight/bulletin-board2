@@ -24,7 +24,7 @@ public class DeleteArticleController {
 	 * @param model リクエストスコープ
 	 * @return　記事一覧画面
 	 */
-	@RequestMapping("/articledelete")
+	@RequestMapping("")
 	public String articleDelete(Integer articleId,Model model) {
 		artrepository.deleteById(articleId);
 		return "redirect:/";

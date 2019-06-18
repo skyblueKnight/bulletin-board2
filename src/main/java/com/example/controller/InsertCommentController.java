@@ -38,7 +38,7 @@ public class InsertCommentController {
 	 * @param model モデル
 	 * @return 掲示板ページ
 	 */
-	@RequestMapping("/post-comment")
+	@RequestMapping("")
 	public String postComment(@Validated CommentForm form, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			model.addAttribute("errorId", form.getArticleId());

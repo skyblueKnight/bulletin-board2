@@ -47,7 +47,7 @@
 		投稿ID：<span th:text="${article.id}"></span><br> 投稿者名：<span
 			th:text="${article.name}"></span><br> 投稿内容：<span
 			th:text="${article.content}"></span><br>
-		<form th:action="@{/bulletin-board/delete-article-and-comment}"
+		<form th:action="@{/deleteArticle}"
 			method="post">
 			<input type="hidden" th:value="${article.id}" name="articleId"
 				id="articleId">
