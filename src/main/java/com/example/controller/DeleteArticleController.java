@@ -3,8 +3,10 @@ package com.example.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.form.ArticleForm;
 import com.example.repository.ArticleRepository;
 
 @Controller
@@ -13,6 +15,7 @@ public class DeleteArticleController {
 	
 	@Autowired
 	private ArticleRepository artrepository;
+	
 	
 	/**
 	 * 指定されたidの記事とその記事へのコメントを削除する.

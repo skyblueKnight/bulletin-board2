@@ -1,8 +1,16 @@
 package com.example.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.domain.Article;
+import com.example.form.ArticleForm;
+import com.example.repository.ArticleRepository;
 
 /**
  * 掲示板画面へ遷移するコントローラ.
@@ -13,6 +21,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 public class IndexController {
+	@Autowired
+	private ArticleRepository artrepository;
+
+	/**
+	 * 記事投稿フォームの準備.
+	 * 
+	 * @return 記事投稿フォーム
+	 */
+	@ModelAttribute
+	public ArticleForm setupArticleForm() {
+		return new ArticleForm();
+	}
 
 	
 	/**
@@ -25,7 +45,9 @@ public class IndexController {
 	 */
 	@RequestMapping("")
 	public String index(Model model) {
-		
+		List<Article> articleList=artrepository.findAll();
+		model.addAttribute("articleList",articleList);
+
 		return "bulletin-board";
 	}
 	
