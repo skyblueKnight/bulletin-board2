@@ -3,6 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <link rel=“stylesheet” href=“style.css”>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+		$("#likeButton").on("click", function(){
+			var hostURL = 'http://localhost:8080/like/add-like';
+			var articleId = $("#articleId").val();
+			alert(articleId);
+			$.ajax({
+				url : hostURL,
+				type : "POST",
+				dataType : "json",
+				data : {id : articleId}
+			}).done(function(){
+				$("#likeButton").after("<span th='' >100</span>")
+				
+			})	.fail(function(XMLHttpRequest, textStatus, errorThrown){
+				   alert("error");
+			});		
+		});
+	});
+
+</script>
 <title>掲示板アプリケーション</title>
 </head>
 <body>
