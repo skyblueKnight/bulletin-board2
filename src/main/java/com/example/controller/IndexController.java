@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Article;
 import com.example.form.ArticleForm;
+import com.example.form.CommentForm;
 import com.example.repository.ArticleRepository;
 
 /**
@@ -32,6 +33,16 @@ public class IndexController {
 	@ModelAttribute
 	public ArticleForm setupArticleForm() {
 		return new ArticleForm();
+	}
+	
+	/**
+	 * コメントフォームのインスタンスを返す.
+	 * 
+	 * @return フォーム
+	 */
+	@ModelAttribute
+	public CommentForm setUpForm() {
+		return new CommentForm();
 	}
 
 	
