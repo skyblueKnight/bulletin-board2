@@ -1,7 +1,5 @@
 package com.example.controller;
 
-import javax.servlet.ServletContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Article;
 import com.example.form.ArticleForm;
-import com.example.form.ArticlePostForm;
 import com.example.repository.ArticleRepository;
 
 /**
@@ -26,8 +23,7 @@ import com.example.repository.ArticleRepository;
 public class InsertArticleController {
 	
 	@Autowired
-	private ServletContext application;
-
+	private IndexController indexController;
 	
 	@Autowired
 	private ArticleRepository artrepository;
@@ -51,10 +47,10 @@ public class InsertArticleController {
 	 * @param model　リクエストスコープ
 	 * @return　記事一覧画面
 	 */
-	@RequestMapping("articlepost")
+	@RequestMapping("")
 	public String articlePost(@Validated ArticleForm form ,BindingResult result,Model model) {
 		if(result.hasErrors()) {
-			return index(model);
+			return indexController.index(model);
 		}
 		Article article=new Article();
 		article.setName(form.getName());
